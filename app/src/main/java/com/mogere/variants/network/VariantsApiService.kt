@@ -27,7 +27,7 @@ interface VariantsApiService{
     suspend fun addVariants(@Body product: Product)
 
     @GET("variant")
-    suspend fun getVariant(id:Long)
+    suspend fun getVariant(id:Long):Product
 }
 
 object VariantsApi {

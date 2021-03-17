@@ -14,6 +14,7 @@
     <string name="submit_variations">Submit Variations</string>
     <string name="add_variation">add variation</string>
     <string name="choose_category">Choose the variation category below</string>
+    <string name="enter_the_price">Enter the price</string>
 
     <string-array name="variation_types">
         <item>Size</item>
