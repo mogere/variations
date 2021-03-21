@@ -34,13 +34,27 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.011" />
 
+
+        <!--        <Spinner-->
+<!--            android:id="@+id/variation_spinner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:tooltipText="Variation category"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.4"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/chooseType"-->
+<!--            app:layout_constraintVertical_bias="0.152" />-->
+
         <TextView
             android:id="@+id/chooseType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="373dp"
+            android:layout_height="72dp"
             android:layout_margin="20dp"
             android:fontFamily="@font/montserrat_alternates"
-            android:padding="10dp"
+            android:padding="15dp"
             android:text="@string/choose_category"
             android:textAllCaps="true"
             android:textColor="#800080"
@@ -49,19 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/heading"
-            app:layout_constraintVertical_bias="0.063" />
-
-        <Spinner
-            android:id="@+id/variation_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:tooltipText="Variation category"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chooseType"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.134" />
 
         <EditText
             android:id="@+id/variations"
@@ -75,8 +77,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/variation_spinner"
-            app:layout_constraintVertical_bias="0.016" />
+            app:layout_constraintTop_toBottomOf="@+id/chooseType"
+            app:layout_constraintVertical_bias="0.064" />
 
         <Button
             android:id="@+id/addVariations"
@@ -84,28 +86,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:background="#800080"
-            android:text="@string/add_variation"
             android:onClick="@{()->variantViewModel.onButtonClicked()}"
+            android:text="@string/add_variation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.525"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/variations"
-            app:layout_constraintVertical_bias="0.108" />
-
-        <TextView
-            android:id="@+id/editTextVariationList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={variantViewModel.variationList}"
-            android:layout_margin="20dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/submitVariations"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addVariations" />
+            app:layout_constraintVertical_bias="0.115" />
 
         <Button
             android:id="@+id/submitVariations"
@@ -114,6 +102,7 @@
             android:layout_margin="20dp"
             android:background="#800080"
             android:text="@string/submit_variations"
+            android:onClick="@{()->variantViewModel.sendVariants()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -126,14 +115,31 @@
             android:layout_marginLeft="16dp"
             android:ems="10"
             android:hint="@string/enter_the_price"
-            android:text="@={variantViewModel.price}"
             android:inputType="number"
+            android:text="@={variantViewModel.price}"
             android:textColor="#999999"
             app:layout_constraintBottom_toTopOf="@+id/addVariations"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/variations"
-            app:layout_constraintTop_toBottomOf="@+id/variation_spinner"
-            app:layout_constraintVertical_bias="0.309" />
+            app:layout_constraintTop_toBottomOf="@+id/chooseType"
+            app:layout_constraintVertical_bias="0.48" />
+
+        <EditText
+            android:id="@+id/VariationList"
+            android:layout_width="366dp"
+            android:layout_height="123dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:text="@{String.valueOf(variantViewModel.variationList)}"
+            app:layout_constraintBottom_toTopOf="@+id/submitVariations"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addVariations" />
+
+
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

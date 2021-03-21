@@ -1,6 +1,7 @@
 package com.mogere.variants
 
 import android.os.Bundle
+import android.text.Editable
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -30,52 +31,30 @@ class MainActivity : AppCompatActivity() {
 
         binding.variantViewModel = viewModel
 
-        viewModel.variations.observe(this, Observer { newWord ->
-            Toast.makeText(this, newWord, Toast.LENGTH_SHORT).show()
-        })
-
-        viewModel.variationList.observe(this, Observer { newWord ->
-            Toast.makeText(this, newWord, Toast.LENGTH_SHORT).show()
-        })
-        viewModel.price.observe(this, Observer { newWord ->
-            Toast.makeText(this, newWord, Toast.LENGTH_SHORT).show()
-        })
-
-        populateSpinner()
-
-//        variantEntered = binding.variations.toString()
-//        //variantPrice = binding.price.toString().toDouble()
-//        variationList = binding.editTextVariationList.toString()
+//        viewModel.variations.observe(this, Observer { newWord ->
+//            Toast.makeText(this, newWord, Toast.LENGTH_SHORT).show()
+//        })
+//
+//
+//        viewModel.price.observe(this, Observer { newWord ->
+//            Toast.makeText(this, newWord, Toast.LENGTH_SHORT).show()
+//        })
 
 
 
     }
 
-    private fun populateSpinner() {
-       var spinner = binding.variationSpinner
-        ArrayAdapter.createFromResource(
-                this,
-                R.array.variation_types,
-                android.R.layout.simple_spinner_item
-        ).also{ adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
-    }
+//    private fun populateSpinner() {
+//       var spinner = binding.variationSpinner
+//        ArrayAdapter.createFromResource(
+//                this,
+//                R.array.variation_types,
+//                android.R.layout.simple_spinner_item
+//        ).also{ adapter ->
+//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//            spinner.adapter = adapter
+//        }
+//    }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 }

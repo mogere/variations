@@ -1,5 +1,7 @@
 package com.mogere.variants.viewModel
 
+import android.view.View
+import android.widget.RadioButton
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
@@ -9,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mogere.variants.Entity.Product
 import com.mogere.variants.MainActivity
+import com.mogere.variants.R
 import com.mogere.variants.network.VariantsApi
 import com.mogere.variants.network.VariantsApiService
 import com.mogere.variants.repository.FakeVariantRepo
@@ -32,34 +35,34 @@ class VariantViewModel: ViewModel(), Observable {
     val price = MutableLiveData<String>()
 
     @Bindable
-    val variationList = MutableLiveData<String>()
+    var variationList : String = variations.toString()
 
 
-    var mainActivity = MainActivity()
-    var variant = MutableLiveData<String>()
+    private var sizes = mutableMapOf<String, Double>()
 
-
-
+    init{
+        setValues()
+    }
 
 
     fun setValues(){
         heading.value = product.value?.name
-        variant.value = mainActivity.variantEntered
     }
+
     fun onButtonClicked(){
+        sizes.put(variations.value.toString(), price.value.toString().toDouble())
+        println(variations.value.toString() + price.value.toString().toDouble())
+        variationList += variations.value.toString()
 
-        variationList.value = variations.value
     }
 
+    fun sendVariants(){
 
-
-
-
-    fun sendVariants(newProduct: Product){
+        product.value?.size = this.sizes
 
         viewModelScope.launch{
             try{
-                FakeVariantRepo.sendVariants(newProduct)
+                FakeVariantRepo.sendVariants(product.value!!)
 
             }catch(e:Error){
 

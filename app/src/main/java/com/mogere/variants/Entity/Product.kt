@@ -6,5 +6,4 @@ data class Product(var id: Long,
                   ) {
 
     var size = mutableMapOf<String, Double>()
-    var flavor = mutableMapOf<String, Double>()
 }

@@ -13,8 +13,10 @@
     <string name="heading">Omo Washing powder</string>
     <string name="submit_variations">Submit Variations</string>
     <string name="add_variation">add variation</string>
-    <string name="choose_category">Choose the variation category below</string>
+    <string name="choose_category">Enter the variations for size below</string>
     <string name="enter_the_price">Enter the price</string>
+    <string name="Flavor">flavor</string>
+    <string name="size">Size</string>
 
     <string-array name="variation_types">
         <item>Size</item>
